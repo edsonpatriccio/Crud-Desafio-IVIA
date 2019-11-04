@@ -47,13 +47,11 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Consultar</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Deletar</a>
-      </li>
     </ul>
     <!-- Links -->
 
   </div>
+  <!-- Collapsible content -->
 	
 </nav>
 	<div class="pr-3 pl-3">
@@ -71,7 +69,8 @@
 					<th scope="col">DDD</th>
 					<th scope="col">Numero</th>
 					<th scope="col">Tipo</th>
-					<th scope="col">Ação</th>
+					<th scope="col">Edição</th>
+					<th scope="col">Deleção</th>
 				</tr>
 			</thead>
 
@@ -85,11 +84,18 @@
 					<td><c:out value="${usuarios.ddd}"></c:out></td>
 					<td><c:out value="${usuarios.numero}"></c:out></td>
 					<td><c:out value="${usuarios.tipo}"></c:out></td>
-					<td><c:out value="#">
-						<ul class="navbar-nav">
-				          <li class="nav-item ml-5"><a class="nav-link btn btn-info"  href="#">Editar</a></li>
-			            </ul>
+					<td><c:out value="${usuarios.id}">
+					<div class="navbar-nav">
+					<input type="submit" value="Editar" class="btn btn-info"></input>
+			        </div>
 					</c:out></td>
+					
+					<td><c:out value="${usuarios.id}">
+					<div class="navbar-nav">
+					<input type="submit" value="Deletar" class="btn btn-danger"></input>
+			        </div>
+					</c:out></td>
+					
 				</tr>
 			</tbody>
 		</table>

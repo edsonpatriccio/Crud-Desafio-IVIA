@@ -24,7 +24,7 @@
 <div class="mr-auto ml-auto mt-5 p-5 border" style="width: 40em;">
   <div>
 	<h4>Atualização realizada com sucesso!!</h4>
-	<a href="/views/consultar.jsp?webroot=%2FJavaWeb%2FWebContent&viewId=5" class="btn btn-primary mt-4">Voltar</a>
+	<a href="/views/editar.jsp" class="btn btn-primary mt-4">Voltar</a>
   </div>
 </div>
 </body>

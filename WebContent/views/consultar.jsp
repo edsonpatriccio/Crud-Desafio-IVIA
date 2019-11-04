@@ -5,38 +5,63 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/scripts.js"></script>
+
 <title>Consultar usuarios</title>
 </head>
 <body>
-<%
-	response.setHeader("Cache-control", "no-cache, no-store, must-revalidade");
-	response.setHeader("Pragma", "no-cache");
-	response.setHeader("Expires", "0");
 
-	if(session.getAttribute("usuario") == null) {
-		response.sendRedirect("403Error.jsp");
-	}
-%>
-<nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-  <a class="navbar-brand text-light" href="usuario?option=home">Crud SEFAZ IVIA</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
-    <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-light" style="background-color: #B0C4DE;">
+	
+	<!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Grud Sefaz IVIA</a>
+  
+ 
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
+    aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active mr-5 ml-5">
-        <a class="nav-link btn btn-info" href="#">Consultar/Deletar/Editar</a>
+	<!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-danger pr-3 pl-3" href="logout?option=sair">SAIR</a>
+        <a class="nav-link" href="#">Cadastrar</a> 
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Editar</a>
       </li>
     </ul>
+    <!-- Links -->
+
   </div>
+  <!-- Collapsible content -->
 </nav>
+<!-- Tabela de consulta -->
+<div class="d-flex justify-content-center">
+		<form id="allForms" action="usuario" method="post" class="mt-2 p-4 border" style="width: 35rem;">
+			<c:set var="usuarios" value="${usuarios}"></c:set>
+			
+			<input type="hidden" name="id" value="${usuarios.id}"></input>
+			<h4 class="mb-4">Consulta</h4>
+			<div class="form-group">
+				<label for="inputAddress">Nome</label> 
+				<input type="text" class="form-control" name="nome" id="idNomeEdita" obrigatorio placeholder="" value="">
+			</div>
+			
+			<input type="submit" value="Consultar" class="btn btn-success"></input>
+			<input type="submit" value="Listar Todos" class="btn btn-warning mr-1"></input>
+		</form>
+	</div>
+
 <!-- Tabela que lista usuarios -->
 <div class="pr-3 pl-3">
 	<h3 class="mt-5 mb-3">Lista de usuarios</h3>
@@ -65,8 +90,7 @@
 	        <td><c:out value="${usuarios.numero}"></c:out></td>
 	        <td><c:out value="${usuarios.tipo}"></c:out></td>
 	        <td align="center">
-	        	<a href="usuario?option=editar&id=<c:out value="${usuarios.id}"></c:out>" class="btn btn-warning mr-1">Atualizar</a>
-	        	<a href="usuario?option=deletar&id=<c:out value="${usuarios.id}"></c:out>" class="btn btn-danger">Deletar</a>
+	        	<a href="usuario?option=deletar&id=<c:out value="${usuarios.id}"></c:out>" class="btn btn-danger">Limpar Consulta</a>
 	        </td>
 	      </tr>
 	    </c:forEach>
